@@ -1960,6 +1960,15 @@ static bool Control( input_thread_t *p_input,
                 var_SetAddress( pp_vout[i], "viewpoint", &priv->viewpoint );
                 vlc_object_release( pp_vout[i] );
             }
+
+            //add view point info in demux for DASH!
+            demux_t *p_demux = priv->master->p_demux;
+            if(p_demux != NULL)
+                p_demux->viewpoint_yaw= priv->viewpoint.yaw;
+                p_demux->viewpoint_pitch= priv->viewpoint.yaw;
+                p_demux->viewpoint_roll= priv->viewpoint.yaw;
+                p_demux->viewpoint_fov= priv->viewpoint.yaw;
+
             break;
         }
 

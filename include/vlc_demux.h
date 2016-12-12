@@ -92,7 +92,12 @@ struct demux_t
         int          i_seekpoint;   /* idem, start from 0 */
     } info;
     demux_sys_t *p_sys;
-
+    
+    float viewpoint_yaw;   /* yaw in degrees */
+    float viewpoint_pitch; /* pitch in degrees */
+    float viewpoint_roll;  /* roll in degrees */
+    float viewpoint_fov;   /* field of view in degrees */
+    
     /* Weak link to parent input */
     input_thread_t *p_input;
 };
