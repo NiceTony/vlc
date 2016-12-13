@@ -134,6 +134,17 @@ static int Open(vlc_object_t *p_obj)
 {
     demux_t *p_demux = (demux_t*) p_obj;
 
+    //add viewpoint variable in demux
+    var_Create(p_demux, "viewpoint-yaw", VLC_VAR_FLOAT);
+    var_Create(p_demux, "viewpoint-pitch", VLC_VAR_FLOAT);
+    var_Create(p_demux, "viewpoint-roll", VLC_VAR_FLOAT);
+    var_Create(p_demux, "viewpoint-fov", VLC_VAR_FLOAT);
+
+    var_SetFloat(p_demux, "viewpoint-yaw", 0);
+    var_SetFloat(p_demux, "viewpoint-pitch", 0);
+    var_SetFloat(p_demux, "viewpoint-roll", 0);
+    var_SetFloat(p_demux, "viewpoint-fov", 0);
+
     if(!p_demux->s->psz_url)
         return VLC_EGENERIC;
 

@@ -1960,6 +1960,12 @@ static bool Control( input_thread_t *p_input,
                 var_SetAddress( pp_vout[i], "viewpoint", &priv->viewpoint );
                 vlc_object_release( pp_vout[i] );
             }
+
+            //update viewpoint in the demux.
+            var_SetFloat(priv->master->p_demux, "viewpoint-yaw", priv->viewpoint.yaw);
+            var_SetFloat(priv->master->p_demux, "viewpoint-pitch", priv->viewpoint.pitch);
+            var_SetFloat(priv->master->p_demux, "viewpoint-roll", priv->viewpoint.pitch);
+            var_SetFloat(priv->master->p_demux, "viewpoint-fov", priv->viewpoint.pitch);
             break;
         }
 
